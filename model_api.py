@@ -10,7 +10,7 @@ encoder = joblib.load("category_encoder_final.pkl")
 
 app = FastAPI()
 
-# ✅ Add valid categories list here
+#  Add valid categories list here
 VALID_CATEGORIES = [
     "Creative Arts",
     "Business & Entrepreneurship",
@@ -30,7 +30,7 @@ class CampaignInput(BaseModel):
 @app.post("/predict")
 def predict_success(data: CampaignInput):
     try:
-        # ✅ Validate category here
+        #  Validate category here
         if data.category not in VALID_CATEGORIES:
             return {"error": f"Invalid category: {data.category}. Must be one of: {', '.join(VALID_CATEGORIES)}"}
 
