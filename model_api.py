@@ -21,7 +21,7 @@ VALID_CATEGORIES = [
     "Medical"
 ]
 
-# ✅ Match frontend variable names
+# Match frontend variable names
 class CampaignInput(BaseModel):
     goalAmount: float = Field(..., gt=4999, description="Goal amount in PKR, must be >= 5000")
     category: str
@@ -35,7 +35,7 @@ def predict_success(data: CampaignInput):
 
         category_encoded = encoder.transform([data.category])[0]
 
-        # ✅ Use frontend variable names, map them internally
+        # Use frontend variable names, map them internally
         X = pd.DataFrame([{
             "goal_pkr": data.goalAmount,
             "category_encoded": category_encoded,
